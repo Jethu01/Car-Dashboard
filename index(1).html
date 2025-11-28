@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Car Dashboard</title>
+<style>
+body { margin:0; padding:0; background:#1b1b1b; color:white; font-family:Arial; }
+.container { display:flex; height:100vh; }
+.left { width:50%; padding:20px; overflow-y:auto; }
+.right { width:50%; background:#000; }
+.card { background:#2a2a2a; padding:20px; margin-bottom:20px; border-radius:12px; }
+iframe { border:none; width:100%; height:380px; border-radius:12px; }
+input { width:100%; padding:12px; margin-top:10px; border-radius:10px; border:none; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="left">
+
+    <div class="card">
+      <h2>🎵 Apple Music Player</h2>
+
+      <p><b>Playlist 1</b></p>
+      <a href="https://music.apple.com/library/playlist/p.6xZagvduY2lzzPx" style="color:#ff4;">Öffnen</a>
+
+      <p><b>Playlist 2</b></p>
+      <a href="https://music.apple.com/library/playlist/p.ZOAX7ERHvWdKKVr" style="color:#ff4;">Öffnen</a>
+
+      <p><b>Playlist 3</b></p>
+      <a href="https://music.apple.com/library/playlist/p.ZOAX7bbIvWdKKVr" style="color:#ff4;">Öffnen</a>
+
+      <br><br>
+
+      <iframe allow="autoplay *; encrypted-media *;"
+        sandbox="allow-forms allow-popups allow-same-origin allow-scripts"
+        src="https://embed.music.apple.com/de/album/after-hours/1499378609">
+      </iframe>
+    </div>
+
+    <div class="card">
+      <h2>📍 Navigation</h2>
+      <input id="ziel" type="text" placeholder="Adresse eingeben... z.B. Köln Neumarkt">
+
+      <button style="margin-top:15px; padding:12px; width:100%; background:#ff0000; color:white; border:none; border-radius:10px;"
+        onclick="startRoute()">Route starten</button>
+    </div>
+
+  </div>
+
+  <div class="right">
+    <iframe id="map"
+      src="https://www.google.com/maps?q=Köln&output=embed">
+    </iframe>
+  </div>
+
+</div>
+
+<script>
+function startRoute() {
+  const eingabe = document.getElementById("ziel").value;
+  const url = "https://www.google.com/maps?q=" + encodeURIComponent(eingabe);
+  document.getElementById("map").src = url;
+}
+</script>
+
+</body>
+
+</html>
